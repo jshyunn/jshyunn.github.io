@@ -127,6 +127,7 @@
             <span class="tag">Anomaly Detection</span>
             <span class="tag">UEBA</span>
             <span class="tag">Zero Trust</span>
+            <span class="tag">DLP</span>
           </div>
         </div>
       </div>
@@ -341,6 +342,82 @@
       <div class="cv-block">
         <h3><span class="cv-icon">📣</span> 대내외 활동 및 교육</h3>
         <ul class="dot-timeline">
+          <li>
+            <div class="dot-timeline-head">
+              <span class="dot-timeline-title"><strong>EBISION 2026</strong> · Best Paper Award</span>
+              <span class="cv-date">2026.07</span>
+            </div>
+            <button type="button" class="detail-btn" data-modal-target="detail-activity-6">자세히 보기 →</button>
+            <template id="detail-activity-6">
+              <h3>EBISION 2026</h3>
+              <p class="modal-meta">Best Paper Award</p>
+              <p class="modal-meta">2026.07</p>
+              <div class="modal-fields">
+                <div class="modal-field">
+                  <span class="modal-field-label">연구 주제</span>
+                  <p><strong>Data Leakage Prevention via Vector Search for Third-Party LLM Use</strong></p>
+                </div>
+                <div class="modal-field">
+                  <span class="modal-field-label">연구 배경</span>
+                  <p>기업의 제3자 LLM 추론 서비스 활용이 증가하면서 내부 문서와 영업기밀이 외부로 전송될 수 있는 새로운 데이터 유출 경로가 형성되었습니다. 기존 DLP 기술인 퍼지 해싱과 키워드 기반 검색은 원문이 패러프레이징·번역·요약되는 경우 표면적 유사도가 크게 감소하여 의미적으로 동일한 정보 유출을 탐지하는 데 한계가 있습니다. 또한 온톨로지 기반 방식은 도메인별 구축 비용이 높고, LLM 분류기 기반 방식은 질의마다 추론 비용이 발생하여 실시간 적용에 제약이 존재합니다. 이에 별도 학습 없이 문장 임베딩과 벡터 검색을 활용하여 의미 기반 데이터 유출을 탐지하는 프레임워크를 제안했습니다.</p>
+                </div>
+                <div class="modal-field">
+                  <span class="modal-field-label">방법론</span>
+                  <ol class="modal-steps">
+                    <li>
+                      <strong>기밀 문서 청킹</strong>
+                      <p>등록 대상 기밀 문서를 50단어 단위의 비중첩 청크로 분할하여 부분 유출 탐지가 가능한 세분화된 분석 단위 구성</p>
+                    </li>
+                    <li>
+                      <strong>문장 임베딩 생성</strong>
+                      <p>all-MiniLM-L6-v2 Sentence-Transformer를 활용해 각 청크를 384차원 의미 벡터로 변환하고 L2 정규화 수행</p>
+                    </li>
+                    <li>
+                      <strong>벡터 검색 인덱스 구축</strong>
+                      <p>기밀 문서 임베딩을 FAISS-HNSW 인덱스에 저장하고 각 벡터에 원본 문서 식별자를 연결하여 탐지 결과의 출처 추적 가능</p>
+                    </li>
+                    <li>
+                      <strong>유출 문서 벡터 검색</strong>
+                      <p>외부 전송 문서를 동일한 방식으로 청킹·임베딩한 뒤, 각 질의 청크에 대해 가장 유사한 기밀 문서 청크를 Top-1 검색</p>
+                    </li>
+                    <li>
+                      <strong>청크 단위 투표 집계</strong>
+                      <p>각 질의 청크의 최근접 검색 결과를 원본 문서별로 집계하고, 최다 매칭 문서의 투표 비율을 기반으로 Confidence Ratio 산출</p>
+                    </li>
+                    <li>
+                      <strong>의미 기반 유출 판별</strong>
+                      <p>Confidence Ratio가 보정된 임계값을 초과하는 경우 데이터 유출로 판정하여 패러프레이징·번역·요약 등 표면 표현이 변형된 유출 탐지</p>
+                    </li>
+                    <li>
+                      <strong>출처 제시형 탐지</strong>
+                      <p>탐지 결과와 함께 가장 많이 매칭된 원본 기밀 문서를 식별하여 단순 이상 판별을 넘어 유출 출처 추적 가능</p>
+                    </li>
+                  </ol>
+                </div>
+                <div class="modal-field">
+                  <span class="modal-field-label">연구 성과</span>
+                  <div class="modal-stats">
+                    <div class="modal-stat">
+                      <p class="modal-stat-value">의미 기반 DLP 프레임워크</p>
+                      <p class="modal-stat-label">패러프레이징·번역·요약에도 탐지 가능한 벡터 검색 구조</p>
+                    </div>
+                    <div class="modal-stat">
+                      <p class="modal-stat-value">Learning-free 방식</p>
+                      <p class="modal-stat-label">사전학습 임베딩과 벡터 검색만으로 동작</p>
+                    </div>
+                    <div class="modal-stat">
+                      <p class="modal-stat-value">출처 추적 가능</p>
+                      <p class="modal-stat-label">원본 기밀 문서 식별 지원</p>
+                    </div>
+                    <div class="modal-stat">
+                      <p class="modal-stat-value">실시간 처리</p>
+                      <p class="modal-stat-label">낮은 지연으로 실무 적용 가능</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </li>
           <li>
             <div class="dot-timeline-head">
               <span class="dot-timeline-title"><strong>2025 금융 AI Challenge</strong></span>

@@ -281,7 +281,7 @@ a:hover { text-decoration: underline; }
   gap: 4px 16px;
 }
 
-.dot-timeline-head .cv-date { min-width: 148px; }
+.dot-timeline-head .cv-date { min-width: 168px; }
 
 .dot-timeline-title { font-size: 1.05rem; font-weight: 700; color: var(--text); }
 
@@ -398,7 +398,6 @@ a:hover { text-decoration: underline; }
 }
 
 .project-desc { color: var(--text-muted); margin: 0; flex-grow: 1; font-size: 0.98rem; }
-.project-links { display: flex; gap: 16px; font-weight: 600; }
 
 /* Scroll reveal */
 .reveal {
@@ -635,7 +634,7 @@ a:hover { text-decoration: underline; }
   .nav-toggle { display: inline-block; }
   .hero h1 { font-size: 1.8rem; }
   .hero-inner { flex-direction: column; text-align: center; gap: 20px; }
-  .hero-photo { width: 100px; height: 100px; }
+  .hero-photo { width: 100px; height: 100px; object-fit: cover; }
   .timeline { grid-template-columns: 1fr; }
   .timeline li:not(:first-child) {
     border-left: none;
