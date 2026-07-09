@@ -1,27 +1,25 @@
 <!DOCTYPE html>
-<html lang="ko" data-theme="light">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OOO Portfolio</title>
-<meta name="description" content="OOO의 개발자 포트폴리오입니다.">
+<title>Seunghyun Jang's Portfolio</title>
+<meta name="description" content="장승현의 포트폴리오입니다.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header class="site-header">
   <div class="container header-inner">
-    <a href="#hero" class="logo">OOO</a>
+    <span class="header-spacer" aria-hidden="true"></span>
     <nav class="nav">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+      <a href="#profile">Profile</a>
+      <a href="#research">Research</a>
+      <a href="#activities">Activities</a>
     </nav>
-    <div class="header-actions">
-      <button id="theme-toggle" class="theme-toggle" aria-label="다크모드 전환">🌙</button>
-      <button id="nav-toggle" class="nav-toggle" aria-label="메뉴 열기">☰</button>
-    </div>
+    <button id="nav-toggle" class="nav-toggle" aria-label="메뉴 열기">☰</button>
   </div>
 </header>
 
@@ -29,141 +27,610 @@
 
   <section id="hero" class="hero">
     <div class="container hero-inner">
-      <p class="eyebrow">Hi, I'm</p>
-      <h1>OOO <span class="accent">/ 목표 직무(예: Backend Developer)</span></h1>
-      <p class="hero-desc">
-        <!-- TODO: 한 줄 소개. 예: "사용자와 데이터를 잇는 서비스를 만드는 백엔드 개발자입니다." -->
-        한 줄 소개를 여기에 작성하세요.
-      </p>
-      <div class="hero-links">
-        <a class="btn btn-primary" href="#projects">프로젝트 보기</a>
-        <a class="btn btn-outline" href="resume.pdf" target="_blank" rel="noopener">이력서 다운로드</a>
-      </div>
-      <div class="hero-social">
-        <a href="https://github.com/OOO" target="_blank" rel="noopener">GitHub</a>
-        <a href="mailto:OOO@example.com">Email</a>
-        <a href="https://www.linkedin.com/in/OOO" target="_blank" rel="noopener">LinkedIn</a>
+      <img class="hero-photo" src="img/me.jpg" alt="장승현">
+      <div class="hero-text">
+        <h1>장승현</h1>
+        <p class="hero-role">Security x AI Researcher</p>
+        <p class="hero-desc">사이버보안 분야에서 다양한 환경의 위협을 분석하고, 이를 탐지하기 위한 방어 기법을 연구하고 있습니다. 특히 이상 탐지를 중심으로 네트워크 및 사용자 행위 기반 위협 탐지 연구를 수행해왔으며, 최근에는 LLM을 활용한 이상 탐지 기법으로 연구 영역을 확장하고 있습니다.</p>
       </div>
     </div>
   </section>
 
-  <section id="about" class="section">
+  <section id="profile" class="section">
     <div class="container">
-      <h2 class="section-title">About</h2>
-      <p class="about-text">
-        <!-- TODO: 자기소개. 강점, 관심 분야, 협업 스타일 등을 2~4문장으로 작성하세요. -->
-        자기소개를 여기에 작성하세요. 어떤 문제에 관심이 있고, 어떤 방식으로 일하는 사람인지 짧게 설명하면 좋습니다.
-      </p>
-      <ul class="about-highlights">
-        <li><strong>강점 1</strong> — 설명</li>
-        <li><strong>강점 2</strong> — 설명</li>
-        <li><strong>강점 3</strong> — 설명</li>
-      </ul>
+      <h2 class="section-title">Profile</h2>
+
+      <div class="profile-grid profile-grid-2col profile-grid-rows">
+        <div class="cv-block">
+          <h3><span class="cv-icon">👤</span> 기본 정보</h3>
+          <ul class="table-list">
+            <li><span>생년월일</span><span>1998.09.02</span></li>
+            <li><span>위치</span><span>Gangbuk-gu, Seoul</span></li>
+            <li><span>이메일</span><span>gur158@naver.com</span></li>
+          </ul>
+        </div>
+
+        <div class="cv-block">
+          <h3><span class="cv-icon">🎓</span> 학력</h3>
+          <ul class="timeline">
+            <li>
+              <span class="timeline-date">2024.09 – 2026.08</span>
+              <div class="timeline-body">
+                <strong>국민대학교</strong> 석사과정 졸업예정
+                <div class="timeline-meta">컴퓨터공학과 · 인공지능융합전공</div>
+                <div class="timeline-meta">GPA 4.5/4.5</div>
+                <div class="timeline-meta">서울</div>
+              </div>
+            </li>
+            <li>
+              <span class="timeline-date">2017.03 – 2023.02</span>
+              <div class="timeline-body">
+                <strong>계명대학교</strong> 졸업
+                <div class="timeline-meta">기계공학(주전공) · Hustar미래형자동차공학(복수전공)</div>
+                <div class="timeline-meta">GPA 3.76/4.5</div>
+                <div class="timeline-meta">대구</div>
+              </div>
+            </li>
+            <li>
+              <span class="timeline-date">2014.03 – 2017.02</span>
+              <div class="timeline-body">
+                <strong>영남고등학교</strong> 졸업
+                <div class="timeline-meta">대구</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <h3><span class="cv-icon">📜</span> 자격증</h3>
+          <ul class="table-list">
+            <li><span>정보보안기사</span><span class="cv-date">2025.12</span></li>
+            <li><span>정보처리기사</span><span class="cv-date">2023.11</span></li>
+            <li><span>네트워크관리사 2급</span><span class="cv-date">2023.10</span></li>
+            <li><span>리눅스마스터 2급</span><span class="cv-date">2023.10</span></li>
+          </ul>
+        </div>
+
+        <div class="cv-block">
+          <h3><span class="cv-icon">💼</span> 경력</h3>
+          <ul class="dot-timeline">
+            <li>
+              <div class="dot-timeline-head">
+                <span class="dot-timeline-title"><strong>한국과학기술정보연구원</strong></span>
+                <span class="cv-date">2025.07 – 2025.08</span>
+              </div>
+              <div class="dot-timeline-meta">과학기술보안연구센터 · 인턴</div>
+              <p class="dot-timeline-desc">암호화 트래픽 기반 공격 분류 연구</p>
+            </li>
+            <li>
+              <div class="dot-timeline-head">
+                <span class="dot-timeline-title"><strong>모라이</strong></span>
+                <span class="cv-date">2022.11 – 2023.07</span>
+              </div>
+              <div class="dot-timeline-meta">대구지사 · 사원</div>
+              <p class="dot-timeline-desc">자율주행 시스템 테스트 자동화 모듈 개발</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <h3><span class="cv-icon">🗣️</span> 어학</h3>
+          <ul class="table-list">
+            <li><span>OPIc(영어)<br>Intermediate High</span><span class="cv-date">2026.03</span></li>
+          </ul>
+        </div>
+
+        <div class="cv-block">
+          <h3><span class="cv-icon">🔍</span> 연구 분야</h3>
+          <div class="tags">
+            <span class="tag">AI for Security</span>
+            <span class="tag">Anomaly Detection</span>
+            <span class="tag">UEBA</span>
+            <span class="tag">Zero Trust</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="skills" class="section section-alt">
+  <section id="research" class="section section-alt">
     <div class="container">
-      <h2 class="section-title">Skills</h2>
+      <h2 class="section-title">Research</h2>
 
-      <div class="skill-group">
-        <h3>Language</h3>
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">TODO</span>
-        </div>
+      <div class="cv-block">
+        <h3><span class="cv-icon">🧪</span> 연구과제</h3>
+        <ul class="divider-list">
+          <li>
+            <div class="divider-list-head"><strong>금융 제로트러스트 가이드 개발</strong><span class="cv-date">2025.07 – 2025.11</span></div>
+            <p class="divider-list-desc">금융보안원</p>
+          </li>
+          <li>
+            <div class="divider-list-head"><strong>도로교통 공공 서비스 인프라의 암호화 사이버위협에 대한 네트워크 행위기반 보안관제 기술 개발</strong><span class="cv-date">2025.01 – 2025.12</span></div>
+            <p class="divider-list-desc">한국도로공사</p>
+          </li>
+        </ul>
       </div>
 
-      <div class="skill-group">
-        <h3>Framework / Library</h3>
-        <div class="tags">
-          <span class="tag">TODO</span>
-          <span class="tag">TODO</span>
-        </div>
+      <div class="cv-block">
+        <h3><span class="cv-icon">💡</span> 특허</h3>
+        <ul class="divider-list">
+          <li>
+            <div class="divider-list-head"><strong>네트워크 플로우 압축을 통한 C-ITS 환경 이상 탐지 기법</strong><span class="cv-date">2025.09.29</span></div>
+            <p class="divider-list-desc">출원번호 10-2025-0141625</p>
+          </li>
+        </ul>
       </div>
 
-      <div class="skill-group">
-        <h3>Tool / Infra</h3>
-        <div class="tags">
-          <span class="tag">Git</span>
-          <span class="tag">Docker</span>
-          <span class="tag">TODO</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects" class="section">
-    <div class="container">
-      <h2 class="section-title">Projects</h2>
+      <h3 class="cv-block-title"><span class="cv-icon">📄</span> 논문</h3>
       <div class="project-grid">
 
         <article class="project-card">
-          <h3>프로젝트 이름 1</h3>
+          <h3>Detecting Unknown Cyberattacks on Traffic Management Center in C-ITS</h3>
           <p class="project-desc">
-            <!-- TODO: 어떤 문제를 해결했는지, 본인의 역할과 성과(숫자 포함)를 적으세요. -->
-            프로젝트 한 줄 설명을 작성하세요.
+            IEEE Communications Magazine (JCR 상위 10%)
           </p>
+          <p class="project-date">2026</p>
           <div class="tags">
-            <span class="tag">Tech1</span>
-            <span class="tag">Tech2</span>
+            <span class="tag">C-ITS</span>
+            <span class="tag">Anomaly Detection</span>
           </div>
-          <div class="project-links">
-            <a href="https://github.com/OOO/project1" target="_blank" rel="noopener">GitHub</a>
-            <a href="#" target="_blank" rel="noopener">Demo</a>
-          </div>
+          <button type="button" class="detail-btn" data-modal-target="detail-paper-1">자세히 보기 →</button>
+          <template id="detail-paper-1">
+            <h3>Detecting Unknown Cyberattacks on Traffic Management Center in C-ITS</h3>
+            <p class="modal-meta">IEEE Communications Magazine (JCR 상위 10%)</p>
+            <p class="modal-meta">2026</p>
+            <div class="modal-links">
+              <a href="https://ieeexplore.ieee.org/document/11355781" target="_blank" rel="noopener">논문 보기 ↗</a>
+              <a href="https://github.com/kmuinfosec/FIC" target="_blank" rel="noopener">코드 보기 ↗</a>
+            </div>
+            <div class="modal-fields">
+              <div class="modal-field">
+                <span class="modal-field-label">연구 배경</span>
+                <p>C-ITS의 교통관리센터는 차량·노변장비·교통 인프라의 데이터를 집약하여 실시간 교통 서비스를 운영하는 핵심 시스템으로, 사이버 공격이 발생하면 교통정보 조작이나 서비스 마비로 이어질 수 있습니다. 그러나 기존 연구는 차량 보안에 집중되어 TMC를 대상으로 한 미지 공격 탐지 연구와 실제 현장 데이터 기반 검증이 부족하고, ML/DL 기반 이상탐지는 높은 연산 비용과 낮은 해석 가능성 때문에 실환경 적용에 한계가 있습니다. 이에 실제 울산 C-ITS TMC 트래픽에서 관찰된 정상 플로우의 규칙성과 반복성을 활용해, 대량의 정상 플로우를 소수의 대표 패턴으로 압축하고 학습되지 않은 패턴을 이상으로 탐지하는 경량 기법을 제안했습니다.</p>
+              </div>
+              <div class="modal-field">
+                <span class="modal-field-label">방법론</span>
+                <ol class="modal-steps">
+                  <li>
+                    <strong>플로우 특징 구성</strong>
+                    <p>각 네트워크 플로우를 송수신 패킷 수·바이트량·지속시간으로 구성된 5차원 통계 벡터로 표현</p>
+                  </li>
+                  <li>
+                    <strong>로그 기반 이산화</strong>
+                    <p>각 특징에 log₂(x+1) 변환과 소수점 절삭을 적용하여 값이 조금씩 다른 유사 플로우를 동일한 이산 패턴으로 변환</p>
+                  </li>
+                  <li>
+                    <strong>Prototype Flow 생성</strong>
+                    <p>동일한 이산 특징값으로 변환된 다수의 유사 정상 플로우를 하나의 대표 Prototype Flow로 압축</p>
+                  </li>
+                  <li>
+                    <strong>정상 Prototype 집합 구축</strong>
+                    <p>학습 데이터에서 생성된 고유 Prototype Flow를 수집하여 정상 트래픽을 대표하는 참조 집합 구성</p>
+                  </li>
+                  <li>
+                    <strong>Membership 기반 탐지</strong>
+                    <p>테스트 플로우를 동일한 방식으로 변환한 뒤 정상 Prototype 집합에 포함되는지 단순 조회하여 정상·이상 판별</p>
+                  </li>
+                  <li>
+                    <strong>미지 공격 탐지 및 근거 제시</strong>
+                    <p>학습된 정상 Prototype과 일치하지 않는 신규 패턴을 이상으로 탐지하고, 정상 참조 집합과의 불일치 여부를 명시적 판단 근거로 제공</p>
+                  </li>
+                </ol>
+              </div>
+              <div class="modal-field">
+                <span class="modal-field-label">연구 성과</span>
+                <div class="modal-stats">
+                  <div class="modal-stat">
+                    <p class="modal-stat-value">0.99 F1-Score</p>
+                    <p class="modal-stat-label">실제 울산 TMC 데이터 기반 공격 탐지</p>
+                  </div>
+                  <div class="modal-stat">
+                    <p class="modal-stat-value">98% Flow Reduction</p>
+                    <p class="modal-stat-label">22,362개 정상 플로우를 484개 Prototype으로 압축</p>
+                  </div>
+                  <div class="modal-stat">
+                    <p class="modal-stat-value">1.57M Flows/sec</p>
+                    <p class="modal-stat-label">단순 변환·집합 조회 기반 고속 탐지</p>
+                  </div>
+                  <div class="modal-stat">
+                    <p class="modal-stat-value">Lower Memory Usage</p>
+                    <p class="modal-stat-label">기존 ML/DL 기반 탐지 모델 대비 낮은 메모리 오버헤드</p>
+                  </div>
+                  <div class="modal-stat">
+                    <p class="modal-stat-value">Unknown Attack Detection</p>
+                    <p class="modal-stat-label">학습에 존재하지 않는 신규 공격 패턴 탐지</p>
+                  </div>
+                  <div class="modal-stat">
+                    <p class="modal-stat-value">Explainable Detection</p>
+                    <p class="modal-stat-label">정상 Prototype 불일치를 탐지 근거로 제공</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
         </article>
 
         <article class="project-card">
-          <h3>프로젝트 이름 2</h3>
-          <p class="project-desc">프로젝트 한 줄 설명을 작성하세요.</p>
+          <h3>제로트러스트 환경 사용자 이상 행위 탐지 연구</h3>
+          <p class="project-desc">국민대학교 대학원 · 석사학위논문</p>
+          <p class="project-date">2026</p>
           <div class="tags">
-            <span class="tag">Tech1</span>
-            <span class="tag">Tech2</span>
+            <span class="tag">Zero Trust</span>
+            <span class="tag">UEBA</span>
           </div>
-          <div class="project-links">
-            <a href="https://github.com/OOO/project2" target="_blank" rel="noopener">GitHub</a>
-            <a href="#" target="_blank" rel="noopener">Demo</a>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <h3>프로젝트 이름 3</h3>
-          <p class="project-desc">프로젝트 한 줄 설명을 작성하세요.</p>
-          <div class="tags">
-            <span class="tag">Tech1</span>
-            <span class="tag">Tech2</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/OOO/project3" target="_blank" rel="noopener">GitHub</a>
-            <a href="#" target="_blank" rel="noopener">Demo</a>
-          </div>
+          <button type="button" class="detail-btn" data-modal-target="detail-paper-2">자세히 보기 →</button>
+          <template id="detail-paper-2">
+            <h3>제로트러스트 환경 사용자 이상 행위 탐지 연구</h3>
+            <p class="modal-meta">국민대학교 대학원 · 석사학위논문</p>
+            <p class="modal-meta">2026</p>
+            <div class="modal-fields">
+              <div class="modal-field">
+                <span class="modal-field-label">연구 배경</span>
+                <p>제로트러스트 아키텍처는 모든 접근 요청을 지속적으로 검증하지만, ZTNA의 접근 제어만으로는 정상 인증 이후 발생하는 위협을 식별하기 어렵습니다. 공격자가 유효한 계정을 탈취하거나 내부 사용자가 정상 권한을 악용하는 경우, 정상 사용자와 동일한 인증·접근 경로를 사용할 수 있기 때문입니다. 또한 기존 이상탐지 데이터셋은 포트 스캔·DDoS 등 경계 기반 공격 중심으로 구성되어 있어, ZTA 환경의 인증 이후 사용자 행위를 충분히 반영하지 못합니다. 이에 사용자별 URI 접근 이력과 URI 신규성을 기반으로 인증 이후 행위 변화를 탐지하는 기법을 제안하고, 실제 ZTA 테스트베드에서 정상 행위와 5종 공격 시나리오를 포함한 데이터셋을 구축해 검증했습니다.</p>
+              </div>
+              <div class="modal-field">
+                <span class="modal-field-label">방법론</span>
+                <ol class="modal-steps">
+                  <li>
+                    <strong>Trie 기반 URI 템플릿화</strong>
+                    <p>URI를 세그먼트 단위로 분리하고 숫자·파일 식별자·해시값 등 동적 값을 일반화하여, 동일 기능이 서로 다른 URI로 분산되는 문제 완화</p>
+                  </li>
+                  <li>
+                    <strong>사용자별 URI 프로파일링</strong>
+                    <p>정상 학습 기간 동안 각 사용자가 접근한 URI 템플릿 집합을 구축하여 사용자별 정상 접근 범위를 행동 기준으로 정의</p>
+                  </li>
+                  <li>
+                    <strong>공통 URI 허용 목록 생성</strong>
+                    <p>전체 사용자의 URI 접근 범위를 분석하고, 다수 사용자가 공통적으로 사용하는 URI를 허용 목록에 포함하여 정상적인 신규 기능 접근으로 인한 오탐 감소</p>
+                  </li>
+                  <li>
+                    <strong>신규 URI 식별</strong>
+                    <p>요청 URI가 해당 사용자의 프로파일과 공통 URI 허용 목록에 모두 존재하지 않는 경우 신규 URI로 판별</p>
+                  </li>
+                  <li>
+                    <strong>URI 신규성 점수 계산</strong>
+                    <p>세션 내 전체 요청 중 신규 URI가 차지하는 비율을 URI Novelty Score로 계산하고, 정상 학습 데이터 기반 임계값과 비교하여 이상 세션 탐지</p>
+                  </li>
+                  <li>
+                    <strong>정상 알람 억제</strong>
+                    <p>이상으로 탐지된 세션에 대해 신규 URI의 HTTP 상태 코드와 고유 신규 URI 수를 분석하여, 정상적인 신규 기능 사용으로 판단되는 세션을 정상으로 재분류</p>
+                  </li>
+                </ol>
+              </div>
+              <div class="modal-field">
+                <span class="modal-field-label">연구 성과</span>
+                <div class="modal-stats">
+                  <div class="modal-stat">
+                    <p class="modal-stat-value">0.98 F1-Score</p>
+                    <p class="modal-stat-label">인증 이후 사용자 이상 행위 탐지</p>
+                  </div>
+                  <div class="modal-stat">
+                    <p class="modal-stat-value">1.00 Precision</p>
+                    <p class="modal-stat-label">정상 사용자의 공격 오분류 없이 탐지</p>
+                  </div>
+                  <div class="modal-stat">
+                    <p class="modal-stat-value">5 Post-Auth Attacks</p>
+                    <p class="modal-stat-label">정찰·권한 상승·악성 파일 업로드·대량 데이터 수집·계정 오남용 평가</p>
+                  </div>
+                  <div class="modal-stat">
+                    <p class="modal-stat-value">0.932 Average Precision</p>
+                    <p class="modal-stat-label">전체 비교 기법 중 최고 AP 달성</p>
+                  </div>
+                  <div class="modal-stat">
+                    <p class="modal-stat-value">7 Baseline Methods</p>
+                    <p class="modal-stat-label">OC-SVM·Isolation Forest·AE·SBERT·LSTM 기반 기법과 비교</p>
+                  </div>
+                  <div class="modal-stat">
+                    <p class="modal-stat-value">AWS-based ZTA Testbed</p>
+                    <p class="modal-stat-label">AWS 기반 제로트러스트 환경 구축·검증</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
         </article>
 
       </div>
     </div>
   </section>
 
-  <section id="contact" class="section section-alt">
+  <section id="activities" class="section">
     <div class="container">
-      <h2 class="section-title">Contact</h2>
-      <p>같이 일해보고 싶으시다면 편하게 연락 주세요.</p>
-      <div class="contact-list">
-        <a href="mailto:OOO@example.com">📧 OOO@example.com</a>
-        <a href="https://github.com/OOO" target="_blank" rel="noopener">🐙 github.com/OOO</a>
-        <a href="https://www.linkedin.com/in/OOO" target="_blank" rel="noopener">💼 linkedin.com/in/OOO</a>
+      <h2 class="section-title">Activities</h2>
+
+      <div class="cv-block">
+        <h3><span class="cv-icon">📣</span> 대내외 활동 및 교육</h3>
+        <ul class="dot-timeline">
+          <li>
+            <div class="dot-timeline-head">
+              <span class="dot-timeline-title"><strong>2025 금융 AI Challenge</strong></span>
+              <span class="cv-date">2025.07 - 2025.09</span>
+            </div>
+            <button type="button" class="detail-btn" data-modal-target="detail-activity-1">자세히 보기 →</button>
+            <template id="detail-activity-1">
+              <h3>2025 금융 AI Challenge</h3>
+              <p class="modal-meta">맞춤형 AI 금융서비스 아이디어 공모전 부문</p>
+              <p class="modal-meta">2025.07 - 2025.09</p>
+              <div class="modal-fields">
+                <div class="modal-field">
+                  <span class="modal-field-label">역할</span>
+                  <p><strong>서비스 기획 및 Agentic AI 개발</strong></p>
+                </div>
+                <div class="modal-field">
+                  <span class="modal-field-label">서비스명</span>
+                  <p><strong>Agentic AI 기반 맞춤형 금융 길잡이</strong></p>
+                </div>
+                <div class="modal-field">
+                  <span class="modal-field-label">수행 내용</span>
+                  <ul class="modal-steps modal-checklist">
+                    <li>
+                      <strong>맞춤형 금융서비스 기획</strong>
+                      <p>사회초년생의 자산 형성을 지원하기 위해 개인의 목표와 재무 상황을 반영하는 Agentic AI 기반 금융 길잡이 서비스 기획</p>
+                    </li>
+                    <li>
+                      <strong>LangGraph 기반 Agent 라우팅</strong>
+                      <p>일반 금융 질의와 맞춤형 자산 설계 요청을 구분하고, 사용자 의도에 따라 적절한 처리 흐름으로 전환하는 Agent 라우팅 로직 설계 및 구현</p>
+                    </li>
+                    <li>
+                      <strong>목표 기반 자산 설계 Agent 개발</strong>
+                      <p>목표 금액과 기간을 입력받고, 고정 수입·지출 정보를 반영하여 개인별 자산 설계 절차를 수행하는 Agent 개발</p>
+                    </li>
+                    <li>
+                      <strong>LLM 기반 금융 자유 질의응답</strong>
+                      <p>주식 개념, 투자 용어 등 일반 금융 질문에 대응할 수 있도록 기본 LLM과 연계한 자유 질의응답형 챗봇 기능 구현</p>
+                    </li>
+                    <li>
+                      <strong>대화형 UI 및 서비스 흐름 구현</strong>
+                      <p>사용자 입력 기반 챗봇 UI를 구현하고, 자연어 질의부터 목표 설정·재무 상황 확인·자산 설계까지의 서비스 흐름 시각화</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </template>
+          </li>
+          <li>
+            <div class="dot-timeline-head">
+              <span class="dot-timeline-title"><strong>2025 미래에셋증권 AI Festival</strong></span>
+              <span class="cv-date">2025.05 - 2025.07</span>
+            </div>
+            <button type="button" class="detail-btn" data-modal-target="detail-activity-2">자세히 보기 →</button>
+            <template id="detail-activity-2">
+              <h3>2025 미래에셋증권 AI Festival</h3>
+              <p class="modal-meta">AI Tech 부문 - Fin Agent 개발: 신뢰받는 Agent, 금융 정답 맞추기</p>
+              <p class="modal-meta">2025.07 - 2025.09</p>
+              <div class="modal-fields">
+                <div class="modal-field">
+                  <span class="modal-field-label">역할</span>
+                  <p><strong>Agent 아키텍처 설계 및 핵심 모듈 개발</strong></p>
+                </div>
+                <div class="modal-field">
+                  <span class="modal-field-label">수행 내용</span>
+                  <ul class="modal-steps modal-checklist">
+                    <li>
+                      <strong>금융 특화 Agent 파이프라인 설계</strong>
+                      <p>HyperCLOVA API 기반으로 금융 질의 분석, 데이터 조회, 후처리, 응답 생성을 수행하는 Agent 파이프라인 설계 및 구현</p>
+                    </li>
+                    <li>
+                      <strong>LLM 기반 질의 구조화</strong>
+                      <p>자연어 질의에서 종목명·날짜 등 핵심 키워드를 추출하고, 단순 조회·상위/하위 조회 등 질의 유형을 자동 분류하는 모듈 개발</p>
+                    </li>
+                    <li>
+                      <strong>질의 유형별 동적 라우팅</strong>
+                      <p>추출 키워드와 분류 결과를 기반으로 데이터 조회 및 후처리 로직을 동적으로 선택·실행하는 라우팅 모듈 개발</p>
+                    </li>
+                    <li>
+                      <strong>코드 기반 정답 생성</strong>
+                      <p>LLM의 직접 계산 대신 정형화된 코드 기반 계산 및 후처리 로직을 적용하여 금융 수치 응답의 정확성 강화</p>
+                    </li>
+                    <li>
+                      <strong>컨텍스트 엔지니어링 및 검증</strong>
+                      <p>페르소나·Few-shot 기반 질의 분석 성능 개선과 출력 포맷 표준화·검증 로직 적용을 통해 응답 신뢰성 강화</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </template>
+          </li>
+          <li>
+            <div class="dot-timeline-head">
+              <span class="dot-timeline-title"><strong>2025년 한국정보보호학회 하계학술대회</strong> · 최우수논문상(과학기술정보통신부 장관상)</span>
+              <span class="cv-date">2025.03 – 2025.05</span>
+            </div>
+            <button type="button" class="detail-btn" data-modal-target="detail-activity-3">자세히 보기 →</button>
+            <template id="detail-activity-3">
+              <h3>2025년 한국정보보호학회 하계학술대회</h3>
+              <p class="modal-meta">최우수논문상(과학기술정보통신부 장관상)</p>
+              <p class="modal-meta">2025.03 – 2025.05</p>
+              <div class="modal-fields">
+                <div class="modal-field">
+                  <span class="modal-field-label">연구 주제</span>
+                  <p><strong>BPF 백도어 매직패킷 실시간 탐지 연구</strong></p>
+                </div>
+                <div class="modal-field">
+                  <span class="modal-field-label">연구 배경</span>
+                  <p>BPF(Berkeley Packet Filter) 백도어는 포트 리스닝이나 주기적 비콘 통신 없이 대기하다가 특정 매직패킷을 수신하면 활성화되어 C2 서버와 리버스쉘을 연결하는 은밀한 위협입니다. 기존 IDS는 알려진 매직넘버 시그니처에 의존하기 때문에, 공격자가 시그니처를 변경한 변종 공격에는 취약합니다. 이에 감염 서버에 별도 보안 소프트웨어를 설치하지 않고, 네트워크 트래픽만으로 매직패킷과 후속 C2 연결의 연관성을 실시간으로 탐지하는 기법을 제안했습니다.</p>
+                </div>
+                <div class="modal-field">
+                  <span class="modal-field-label">방법론</span>
+                  <ol class="modal-steps">
+                    <li>
+                      <strong>신규 세션 식별</strong>
+                      <p>출발지·목적지 IP와 Port의 4-Tuple을 해시화하여 최초 등장 세션 식별</p>
+                    </li>
+                    <li>
+                      <strong>C2 후보 정보 추출</strong>
+                      <p>신규 세션의 패킷 페이로드에서 BPF 도어 구조에 기반한 C2 IP·Port 후보 정보 추출</p>
+                    </li>
+                    <li>
+                      <strong>블랙리스트 동적 등록</strong>
+                      <p>추출한 (C2 IP, C2 Port) 정보를 모니터링 대상 호스트별 블랙리스트에 실시간 저장</p>
+                    </li>
+                    <li>
+                      <strong>후속 연결 상관분석</strong>
+                      <p>감염 의심 서버의 외부 연결과 등록된 C2 후보 정보를 매칭하여 리버스쉘 연결 탐지</p>
+                    </li>
+                    <li>
+                      <strong>매직패킷 실시간 판별</strong>
+                      <p>C2 후보 정보와 실제 후속 연결이 일치할 경우, 선행 패킷을 매직패킷으로 식별</p>
+                    </li>
+                    <li>
+                      <strong>변종 공격 대응</strong>
+                      <p>고정 매직넘버가 아닌 매직패킷과 후속 C2 통신의 행위 연관성을 활용하여 시그니처 변경 공격 탐지</p>
+                    </li>
+                  </ol>
+                </div>
+                <div class="modal-field">
+                  <span class="modal-field-label">연구 성과</span>
+                  <div class="modal-stats">
+                    <div class="modal-stat">
+                      <p class="modal-stat-value">100% Detection</p>
+                      <p class="modal-stat-label">Origin·Mutant 공격 탐지</p>
+                    </div>
+                    <div class="modal-stat">
+                      <p class="modal-stat-value">0 False Positives</p>
+                      <p class="modal-stat-label">실험 환경 오탐 없이 탐지</p>
+                    </div>
+                    <div class="modal-stat">
+                      <p class="modal-stat-value">vs. Snort · Suricata</p>
+                      <p class="modal-stat-label">기존 IDS 미탐 변종 탐지</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </li>
+          <li>
+            <div class="dot-timeline-head">
+              <span class="dot-timeline-title"><strong>2024년 한국정보보호학회 동계학술대회</strong> · 우수논문상</span>
+              <span class="cv-date">2024.09 – 2024.11</span>
+            </div>
+            <button type="button" class="detail-btn" data-modal-target="detail-activity-4">자세히 보기 →</button>
+            <template id="detail-activity-4">
+              <h3>2024년 한국정보보호학회 동계학술대회</h3>
+              <p class="modal-meta">우수논문상</p>
+              <p class="modal-meta">2024.09 – 2024.11</p>
+              <div class="modal-fields">
+                <div class="modal-field">
+                  <span class="modal-field-label">연구 주제</span>
+                  <p><strong>차세대 지능형 교통시스템 이상탐지 실증 연구</strong></p>
+                </div>
+                <div class="modal-field">
+                  <span class="modal-field-label">연구 배경</span>
+                  <p>C-ITS 통신망은 교통 상황 모니터링·제어 및 자율주행에 관여하며, 센터 서버에 대한 사이버 공격은 서비스 장애와 인적 피해로 이어질 수 있습니다. 특히 현장 장비가 실시간 교통 정보를 암호화하여 전송하는 환경에서는 통신 내용에 의존한 분석에 제약이 있고, 기존 인공지능 기반 이상탐지는 블랙박스 판별 방식이라 판단 근거를 제시하기 어렵다는 한계가 있습니다. 이에 네트워크 플로우 기반의 근거 제시형 이상탐지 기법을 제안했습니다.</p>
+                </div>
+                <div class="modal-field">
+                  <span class="modal-field-label">방법론</span>
+                  <ol class="modal-steps">
+                    <li>
+                      <strong>서비스 데몬 식별</strong>
+                      <p>TCP 플래그 정보를 이용해 SYN/ACK 패킷을 전송한 IP 주소와 포트 번호를 서비스 데몬으로 식별</p>
+                    </li>
+                    <li>
+                      <strong>플로우 특징 구성</strong>
+                      <p>각 플로우를 송수신 패킷 수·바이트량과 총량으로 구성된 6차원 트래픽 벡터로 변환</p>
+                    </li>
+                    <li>
+                      <strong>로그 이산화</strong>
+                      <p>6차원 플로우 특징에 로그 함수를 적용하여 각 플로우를 하나의 이산화 시그니처 값으로 변환</p>
+                    </li>
+                    <li>
+                      <strong>정상 시그니처 집합 생성</strong>
+                      <p>데몬별 정상 플로우의 시그니처 값을 수집하여 서비스별 정상 트래픽 패턴 구축</p>
+                    </li>
+                    <li>
+                      <strong>시그니처 매칭</strong>
+                      <p>테스트 플로우가 학습된 정상 시그니처 집합에 포함되는지 확인하여 이상 여부 판단</p>
+                    </li>
+                    <li>
+                      <strong>근거 제시형 탐지</strong>
+                      <p>정상 시그니처 집합에 속하지 않는 경우를 명확한 판단 근거로 활용하여 블랙박스 방식의 한계 보완</p>
+                    </li>
+                  </ol>
+                </div>
+                <div class="modal-field">
+                  <span class="modal-field-label">연구 성과</span>
+                  <div class="modal-stats">
+                    <div class="modal-stat">
+                      <p class="modal-stat-value">0.99 F1-Score</p>
+                      <p class="modal-stat-label">17종 공격 데이터 평가</p>
+                    </div>
+                    <div class="modal-stat">
+                      <p class="modal-stat-value">97% Reduction</p>
+                      <p class="modal-stat-label">정상 플로우 평균 축소</p>
+                    </div>
+                    <div class="modal-stat">
+                      <p class="modal-stat-value">99.6% Max</p>
+                      <p class="modal-stat-label">최대 플로우 축소</p>
+                    </div>
+                    <div class="modal-stat">
+                      <p class="modal-stat-value">Real-world Dataset</p>
+                      <p class="modal-stat-label">실제 현장 데이터 실증</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </li>
+          <li>
+            <div class="dot-timeline-head">
+              <span class="dot-timeline-title"><strong>[정보보안] 모의해킹/침해대응 전문가 취업캠프</strong></span>
+              <span class="cv-date">2023.08 – 2024.02</span>
+            </div>
+            <button type="button" class="detail-btn" data-modal-target="detail-activity-5">자세히 보기 →</button>
+            <template id="detail-activity-5">
+              <h3>[정보보안] 모의해킹/침해대응 전문가 취업캠프</h3>
+              <p class="modal-meta">더조은컴퓨터아카데미</p>
+              <p class="modal-meta">2023.08 – 2024.02 (1050시간)</p>
+              <div class="modal-fields">
+                <div class="modal-field">
+                  <span class="modal-field-label">수행 내용</span>
+                  <ul class="modal-steps modal-checklist">
+                    <li>
+                      <strong>기업 네트워크 설계 및 보안 정책 구성</strong>
+                      <p>Packet Tracer를 활용해 기업 내부 네트워크 망을 설계·구축하고, 라우팅 및 ACL 기반 접근제어 정책 설정 실습 수행</p>
+                    </li>
+                    <li>
+                      <strong>리눅스·윈도우 서버 구축 및 보안 설정</strong>
+                      <p>VMware 기반 가상 환경에서 웹·메일·DNS 서버를 구축하고, 운영체제별 서버 보안 설정 및 관리 실습 수행</p>
+                    </li>
+                    <li>
+                      <strong>웹 애플리케이션 취약점 진단</strong>
+                      <p>BeeBox와 Burp Suite를 활용해 웹 애플리케이션의 주요 취약점을 분석하고, 공격 요청 변조 및 취약점 진단 실습 수행</p>
+                    </li>
+                    <li>
+                      <strong>AWS 클라우드 인프라 및 보안 구성</strong>
+                      <p>AWS 환경에서 서버 인스턴스 생성, 네트워크 구성 및 접근제어 등 클라우드 인프라 구축과 보안 설정 실습 수행</p>
+                    </li>
+                    <li>
+                      <strong>pfSense 기반 DDoS 탐지·차단 프로젝트</strong>
+                      <p>오픈소스 UTM 솔루션 pfSense를 구축하고 보안 룰셋을 적용하여, DDoS 공격 시나리오에 대한 트래픽 탐지 및 차단 프로젝트 수행</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </template>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
+
 
 </main>
 
 <footer class="site-footer">
-  <div class="container">
-    <p>&copy; <span id="year"></span> OOO. Built with plain HTML/CSS/JS.</p>
+  <div class="container footer-inner">
+    <p>Copyright &copy; <span id="year"></span> by Seunghyun Jang. All rights reserved.</p>
+    <a href="#hero" class="back-to-top">맨 위로 ↑</a>
   </div>
 </footer>
+
+<div class="modal-overlay" id="modal-overlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-body">
+    <button type="button" class="modal-close" id="modal-close" aria-label="닫기">&times;</button>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
 
 <script src="js/main.js"></script>
 </body>
