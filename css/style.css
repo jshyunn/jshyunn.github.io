@@ -380,6 +380,7 @@ a:hover { text-decoration: underline; }
   display: flex;
   flex-direction: column;
   gap: 12px;
+  cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 

@@ -60,6 +60,15 @@ document.querySelectorAll("[data-modal-target]").forEach((btn) => {
   btn.addEventListener("click", () => openModal(btn.getAttribute("data-modal-target")));
 });
 
+document.querySelectorAll(".project-card").forEach((card) => {
+  const btn = card.querySelector("[data-modal-target]");
+  if (!btn) return;
+  card.addEventListener("click", (e) => {
+    if (e.target.closest(".detail-btn")) return;
+    openModal(btn.getAttribute("data-modal-target"));
+  });
+});
+
 if (modalClose) modalClose.addEventListener("click", closeModal);
 
 if (modalOverlay) {
