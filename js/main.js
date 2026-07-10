@@ -45,8 +45,8 @@ function openModal(templateId) {
   if (!template || !modalOverlay || !modalBody) return;
   modalBody.innerHTML = "";
   modalBody.appendChild(template.content.cloneNode(true));
-  modalBody.scrollTop = 0;
   modalOverlay.hidden = false;
+  modalBody.scrollTop = 0;
   document.body.style.overflow = "hidden";
 }
 

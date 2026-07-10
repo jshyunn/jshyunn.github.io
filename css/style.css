@@ -440,6 +440,7 @@ a:hover { text-decoration: underline; }
 
 .modal-body {
   overflow-y: auto;
+  overflow-anchor: none;
   min-height: 0;
 }
 
@@ -459,6 +460,24 @@ a:hover { text-decoration: underline; }
 }
 
 .modal-close:hover { color: var(--text); background: var(--bg-alt); }
+
+.modal-head-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 4px;
+}
+
+.modal-head-meta { flex: 1; min-width: 0; }
+
+.modal-body p.modal-hashtags {
+  margin: 4px 0 0;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.85rem;
+  word-spacing: 0.5em;
+}
 
 .modal-body h3 {
   margin: 0 20px 8px 0;
@@ -481,6 +500,17 @@ a:hover { text-decoration: underline; }
   gap: 16px;
   margin-top: 12px;
 }
+
+.modal-hashtags-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.modal-hashtags-row .modal-hashtags { margin-top: 0; }
+.modal-hashtags-row .modal-links { margin-top: 0; flex-shrink: 0; }
 
 .modal-links a {
   color: var(--accent);
