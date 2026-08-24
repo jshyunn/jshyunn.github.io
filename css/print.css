@@ -1,0 +1,158 @@
+/* PDF / 인쇄용 스타일
+   - .print-mode : index.html?print 로 열었을 때 화면 미리보기
+   - @media print : 실제 인쇄 및 headless PDF 출력
+   본문 내용은 index.html 하나로 유지되며, 이 파일은 표현만 담당한다.
+   화면 레이아웃(960px 기준)을 그대로 두고 지면에 맞춰 축소하는 방식이라,
+   단 구성·색·간격 비율이 웹 화면과 동일하게 유지된다.
+
+   지면 구성
+     1면  Profile
+     2면  연구과제 · 특허 · 논문 카드
+     3면  대내외 활동 및 교육 목록
+     4면~ 자세히 보기 상세 — 논문부터 활동까지 한 항목당 한 면 */
+
+/* 원래 카드·타임라인에서 분리해 독립 면으로 배치하는 상세.
+   .modal-body 클래스를 함께 부여해 기존 모달 타이포그래피를 그대로 재사용하고,
+   어느 항목의 내용인지 알 수 있도록 제목과 부가 정보를 노출한다. */
+.detail-page {
+  overflow: visible;
+  padding-top: 4px;
+}
+
+.detail-page .modal-head h3 { font-size: 1.35rem; }
+
+/* 한 면에 상세가 둘 이상 들어갈 때의 간격.
+   구분선을 쓰면 항목이 면 맨 위로 밀렸을 때 선만 남으므로 여백으로만 구분한다. */
+.detail-page + .detail-page { margin-top: 44px; }
+
+.print-mode .detail-btn { display: none; }
+
+@media print {
+  @page {
+    size: A4;
+    margin: 8mm;
+  }
+
+  /* 축소(zoom)로 작아진 글자를 기준 크기를 키워 되돌린다.
+     본문·제목은 읽기 좋은 크기를 되찾고, 부가 정보만 아래에서 다시 작게 조정한다. */
+  html { font-size: 18px; }
+
+  /* 960px 레이아웃을 재배치 없이 A4 폭에 담기 위한 축소.
+     폭을 줄여 단 수를 바꾸는 대신 전체를 그대로 축소해 화면 구조를 유지한다.
+     0.76은 여백 8mm 기준으로 960px가 지면 폭에 꼭 맞는 최대값이다. */
+  body {
+    zoom: 0.76;
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* 화면 전용 요소 제거 */
+  .site-header,
+  .nav-toggle,
+  .back-to-top,
+  .modal-overlay,
+  .detail-btn { display: none !important; }
+
+  /* 스크롤 등장 애니메이션이 인쇄 시 빈 영역으로 남지 않도록 해제 */
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .project-card {
+    transform: none !important;
+    box-shadow: none !important;
+    cursor: auto;
+  }
+
+  /* 배경 톤을 흰색으로 통일 */
+  .section-alt { background: #fff; }
+
+  /* 부가 정보(기간·소속·해시태그·라벨·지표 설명)는 본문보다 작게 유지 */
+  .cv-date,
+  .project-date,
+  .modal-stat-label,
+  .modal-body p.modal-hashtags { font-size: 0.72rem; }
+  .timeline-meta,
+  .dot-timeline-meta { font-size: 0.75rem; }
+  .modal-field-label { font-size: 0.66rem; }
+  .modal-body .modal-meta { font-size: 0.76rem; }
+  .site-footer { font-size: 0.76rem; }
+  .timeline-date { font-size: 0.8rem; }
+  .timeline li { font-size: 0.95rem; } /* 3단 학력 카드가 줄바꿈되지 않는 크기 */
+
+  /* 1면(Hero·Profile)은 지면에 여유가 있으므로 본문을 키워 가독성을 높인다.
+     3단 학력 카드는 폭이 좁아 줄바꿈이 생기므로 부가 정보만 소폭 키운다. */
+  .hero h1 { font-size: 2.6rem; }
+  .hero-desc { font-size: 1.16rem; }
+  #profile .cv-block h3,
+  #profile .skill-group h3 { font-size: 1.32rem; }
+  #profile .table-list li { font-size: 1.12rem; }
+  #profile .dot-timeline-title { font-size: 1.16rem; }
+  #profile .dot-timeline-desc { font-size: 1.1rem; }
+  #profile .dot-timeline-meta { font-size: 0.82rem; }
+
+  /* 3단 학력 카드는 폭이 좁아 한글이 단어 중간에서 끊기므로 단어 단위로 줄바꿈한다. */
+  .timeline-body,
+  .timeline-meta { word-break: keep-all; }
+
+  /* 세로 여백 압축. 비율은 유지한 채 간격만 줄인다.
+     섹션 하단 여백은 페이지 경계를 넘으면 빈 페이지를 만들므로 제거한다. */
+  .hero { padding: 0 0 4px; }
+  .section { padding-top: 26px; padding-bottom: 0; }
+  .hero + .section { padding-top: 14px; }
+  .section-title { margin-bottom: 16px; }
+  .profile-grid { gap: 20px 48px; }
+  .cv-block, .skill-group { margin-bottom: 18px; }
+  .cv-block h3, .skill-group h3, .cv-block-title { margin-bottom: 12px; }
+  .table-list li { padding: 8px 0; }
+  .divider-list > li { padding: 12px 0; }
+  .dot-timeline { gap: 22px; }
+
+  /* 인쇄 시 미디어 쿼리는 축소 전 지면 폭(약 733px)으로 평가되어 모바일 레이아웃이
+     적용되므로, 데스크톱 화면과 동일한 단 구성을 되돌린다. */
+  .profile-grid { grid-template-columns: 1fr 1.4fr 1fr; }
+  .profile-grid-2col { grid-template-columns: 1fr 2fr; }
+
+  .timeline { grid-template-columns: repeat(3, 1fr); }
+  .timeline li:not(:first-child),
+  .timeline li:nth-child(3) {
+    border-left: 1px solid var(--border);
+    padding-left: 20px;
+    border-top: none;
+    padding-top: 0;
+  }
+
+  /* 면 구성 */
+  #research .section-title { break-before: page; }  /* 1면은 Profile, 2면은 Research + Activities 목록 */
+
+  /* 상세는 3면부터. 한 항목이 페이지 경계에서 쪼개지지 않게만 막고,
+     남는 자리에는 다음 항목이 이어지도록 두어 짧은 항목끼리 한 면에 모인다. */
+  .detail-pages > .detail-page:first-child { break-before: page; }
+  .detail-page { break-inside: avoid; }
+
+  /* PDF에서는 저작권 표시를 넣지 않는다. */
+  .site-footer { display: none; }
+
+  /* 페이지 분할 제어 */
+  .section-title,
+  .cv-block > h3,
+  .skill-group > h3,
+  .cv-block-title,
+  .dot-timeline-head,
+  .divider-list-head,
+  .modal-field-label { break-after: avoid; }
+
+  .timeline li,
+  .table-list li,
+  .divider-list > li,
+  .modal-steps li,
+  .modal-stat,
+  .project-card { break-inside: avoid; }
+
+  a { color: var(--text); text-decoration: none; }
+  .modal-links a { color: var(--accent); }
+}
