@@ -66,11 +66,7 @@
     transform: none !important;
     box-shadow: none !important;
     cursor: auto;
-    padding: 18px;
   }
-
-  /* 지면에서는 카드 높이를 맞추기 위한 제목 최소 높이가 불필요한 여백이 된다. */
-  .project-card h3 { min-height: 0; }
 
   /* 배경 톤을 흰색으로 통일 */
   .section-alt { background: #fff; }
