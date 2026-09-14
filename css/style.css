@@ -367,7 +367,8 @@ a:hover { text-decoration: underline; }
 /* Projects */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  /* 논문 카드는 2단까지만 — 320px 하한이 960px 폭에서 3단 분할을 막아 4편이 2×2로 놓인다. */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 20px;
 }
 
