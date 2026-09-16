@@ -1,60 +1,67 @@
 /* PDF / 인쇄용 스타일
-   - .print-mode : index.html?print 로 열었을 때 화면 미리보기
-   - @media print : 실제 인쇄 및 headless PDF 출력
-   본문 내용은 index.html 하나로 유지되며, 이 파일은 표현만 담당한다.
-   화면 레이아웃(960px 기준)을 그대로 두고 지면에 맞춰 축소하는 방식이라,
-   단 구성·색·간격 비율이 웹 화면과 동일하게 유지된다.
+   - index.html?print 로 열면 넘김 없이 모든 면이 이어진 문서가 된다.
+   - 지면은 가로 A4.
 
-   지면 구성
-     1면  Profile
-     2면  연구과제 · 특허 · 논문 카드
-     3면  대내외 활동 및 교육 목록
-     4면~ 자세히 보기 상세 — 논문부터 활동까지 한 항목당 한 면 */
+   원칙 — 화면 슬라이드를 그대로 한 장의 지면에 축소해 얹는다.
+   면마다 배율이나 글자 크기를 따로 주지 않는다. 크기를 정하는 장치는
+   아래 body 의 zoom 한 줄뿐이고, 글자·여백·그림은 모두 화면 값을 그대로 쓴다.
+   그래야 같은 등급의 제목이 면마다 같은 크기로 찍히고, 그림 안 글자도
+   본문과 같은 비율로 줄어 따로 보정할 필요가 없다.
 
-/* 원래 카드·타임라인에서 분리해 독립 면으로 배치하는 상세.
-   .modal-body 클래스를 함께 부여해 기존 모달 타이포그래피를 그대로 재사용하고,
-   어느 항목의 내용인지 알 수 있도록 제목과 부가 정보를 노출한다. */
-.detail-page {
-  overflow: visible;
-  padding-top: 4px;
-}
-
-.detail-page .modal-head h3 { font-size: 1.35rem; }
-
-/* 한 면에 상세가 둘 이상 들어갈 때의 간격.
-   구분선을 쓰면 항목이 면 맨 위로 밀렸을 때 선만 남으므로 여백으로만 구분한다. */
-.detail-page + .detail-page { margin-top: 44px; }
-
-.print-mode .detail-btn { display: none; }
+   면 구성 — 섹션 하나가 곧 한 면이다.
+     1면 Profile / 2면 Research / 3면 Activities
+     4면 제로트러스트 / 5면 C-ITS / 6면 AI 에이전트 개발 */
 
 @media print {
   @page {
-    size: A4;
-    margin: 8mm;
+    size: A4 landscape;
+    margin: 6mm;
   }
 
-  /* 축소(zoom)로 작아진 글자를 기준 크기를 키워 되돌린다.
-     본문·제목은 읽기 좋은 크기를 되찾고, 부가 정보만 아래에서 다시 작게 조정한다. */
-  html { font-size: 18px; }
+  /* ── 1. 화면 슬라이드와 같은 기준 크기와 폭 ──
+     ?print 로 열면 스크립트가 .slide-mode / .slide-root 를 붙이지 않으므로
+     화면에서 그 두 클래스가 주던 값을 여기서 그대로 재현한다. */
+  html { font-size: 18.5px; }          /* 화면 .slide-root 와 같은 값 */
 
-  /* 960px 레이아웃을 재배치 없이 A4 폭에 담기 위한 축소.
-     폭을 줄여 단 수를 바꾸는 대신 전체를 그대로 축소해 화면 구조를 유지한다.
-     0.76은 여백 8mm 기준으로 960px가 지면 폭에 꼭 맞는 최대값이다. */
+  /* 화면 슬라이드는 1400px 까지 넓어진다. 지면은 그보다 세로가 짧아, 같은 폭으로
+     축소하면 높이에 먼저 걸려 배율이 내려가고 좌우가 남는다. 폭을 넓게 열어 두면
+     지면 폭을 다 쓰는 선까지 자동으로 넓어져, 같은 배치 그대로 글자가 커진다.
+     아래 배율에서 실제 배치 폭은 1077 ÷ 0.668 ≈ 1612px 라 이 값은 상한으로만 쓰인다. */
+  .container { max-width: 1640px; padding: 0; }
+
+  .hero-desc { max-width: none; }      /* 화면 .slide-mode .hero-desc */
+
+  /* 화면에서는 면 아래쪽에 스크롤 여백이 필요하지만, 인쇄에서는 섹션이 곧
+     지면 한 장이라 그 여백이 그대로 버려진다. 지면 여백이 대신하므로 없앤다. */
+  .section {
+    padding: 0;
+    background: none;
+  }
+
+  /* ── 2. 문서 전체를 하나의 배율로 축소 ──
+     크기를 조절하는 장치는 이 한 줄뿐이다.
+       가로 A4 297mm − 여백 12mm = 285mm ≈ 1077px, 세로 194mm ≈ 748px
+       배치 폭 1077 ÷ 0.668 ≈ 1612px, 한 면에 담기는 높이 748 ÷ 0.668 ≈ 1120px
+     여섯 면이 모두 한 장씩 들어가는 가장 큰 값이다. 0.672 로 올리면
+     AI 에이전트 면이 둘로 쪼개진다. 면을 하나라도 줄이거나 늘리면 다시 재야 한다. */
   body {
-    zoom: 0.76;
+    zoom: 0.668;
     background: #fff;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
-  /* 화면 전용 요소 제거 */
+  /* ── 3. 화면 전용 요소 제거 ── */
   .site-header,
   .nav-toggle,
   .back-to-top,
-  .modal-overlay,
-  .detail-btn { display: none !important; }
+  .site-footer,
+  .slide-arrow,
+  .slide-dots { display: none !important; }
 
-  /* 스크롤 등장 애니메이션이 인쇄 시 빈 영역으로 남지 않도록 해제 */
+  .section-alt { background: #fff; }
+
+  /* 스크롤 등장 효과는 화면에 들어온 적 없는 요소를 숨긴 채로 출력하므로 해제한다. */
   .reveal,
   .reveal.is-visible {
     opacity: 1 !important;
@@ -62,58 +69,48 @@
     transition: none !important;
   }
 
-  .project-card {
-    transform: none !important;
-    box-shadow: none !important;
-    cursor: auto;
+  /* ── 4. 데스크톱 배치 복원 ──
+     인쇄 시 미디어 쿼리는 축소 전 지면 폭으로 평가되어 좁은 화면용 배치가
+     적용된다. 화면(데스크톱)에서 보던 단 구성으로 되돌린다.
+     값은 모두 style.css 의 기본값과 같다. */
+  /* 사진과 소개가 오른쪽으로 붙으면서 면 제목 옆이 통째로 빈다.
+     제목을 흐름에서 빼 그 빈 자리에 얹으면 머리 부분이 면 맨 위에서 시작하고,
+     제목이 차지하던 높이만큼 아래 내용도 함께 올라온다.
+     사진·소개는 오른쪽 정렬이라 제목과 겹치지 않는다. */
+  #profile > .container { position: relative; }
+
+  #profile .section-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
   }
 
-  /* 배경 톤을 흰색으로 통일 */
-  .section-alt { background: #fff; }
+  /* 머리 부분은 지면에서만 오른쪽 끝에 맞춘다. 사진이 맨 오른쪽에 오고
+     이름과 소개는 그 왼쪽에 오른쪽 정렬로 붙어, 아래 학력 칸의 오른쪽 끝과
+     선이 맞는다. 좁은 화면용 세로 배치를 되돌리는 일도 여기서 함께 한다.
+       flex: 0 1 auto  — 화면의 flex:1 을 풀어야 둘이 한 덩어리로 붙는다.
+       order: 1        — 마크업을 건드리지 않고 사진만 뒤로 보낸다. */
+  .hero-inner {
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 40px;
+  }
 
-  /* 부가 정보(기간·소속·해시태그·라벨·지표 설명)는 본문보다 작게 유지 */
-  .cv-date,
-  .project-date,
-  .modal-stat-label,
-  .modal-body p.modal-hashtags { font-size: 0.72rem; }
-  .timeline-meta,
-  .dot-timeline-meta { font-size: 0.75rem; }
-  .modal-field-label { font-size: 0.66rem; }
-  .modal-body .modal-meta { font-size: 0.76rem; }
-  .site-footer { font-size: 0.76rem; }
-  .timeline-date { font-size: 0.8rem; }
-  .timeline li { font-size: 0.95rem; } /* 3단 학력 카드가 줄바꿈되지 않는 크기 */
+  .hero-text {
+    flex: 0 1 auto;
+    text-align: right;
+  }
 
-  /* 1면(Hero·Profile)은 지면에 여유가 있으므로 본문을 키워 가독성을 높인다.
-     3단 학력 카드는 폭이 좁아 줄바꿈이 생기므로 부가 정보만 소폭 키운다. */
-  .hero h1 { font-size: 2.6rem; }
-  .hero-desc { font-size: 1.16rem; }
-  #profile .cv-block h3,
-  #profile .skill-group h3 { font-size: 1.32rem; }
-  #profile .table-list li { font-size: 1.12rem; }
-  #profile .dot-timeline-title { font-size: 1.16rem; }
-  #profile .dot-timeline-desc { font-size: 1.1rem; }
-  #profile .dot-timeline-meta { font-size: 0.82rem; }
+  /* 사진은 화면 기본값이 180px 이다. 지면에서는 제목을 흐름에서 빼 머리 부분이
+     위로 올라온 만큼 세로가 남으므로 그 여유를 사진에 쓴다.
+     250px 를 넘기면 아래 어학 칸이 다음 면으로 밀려 1면이 둘로 쪼개진다. */
+  .hero-photo {
+    width: 240px;
+    height: auto;
+    order: 1;
+  }
 
-  /* 3단 학력 카드는 폭이 좁아 한글이 단어 중간에서 끊기므로 단어 단위로 줄바꿈한다. */
-  .timeline-body,
-  .timeline-meta { word-break: keep-all; }
-
-  /* 세로 여백 압축. 비율은 유지한 채 간격만 줄인다.
-     섹션 하단 여백은 페이지 경계를 넘으면 빈 페이지를 만들므로 제거한다. */
-  .hero { padding: 0 0 4px; }
-  .section { padding-top: 26px; padding-bottom: 0; }
-  .hero + .section { padding-top: 14px; }
-  .section-title { margin-bottom: 16px; }
-  .profile-grid { gap: 20px 48px; }
-  .cv-block, .skill-group { margin-bottom: 18px; }
-  .cv-block h3, .skill-group h3, .cv-block-title { margin-bottom: 12px; }
-  .table-list li { padding: 8px 0; }
-  .divider-list > li { padding: 12px 0; }
-  .dot-timeline { gap: 18px; }
-
-  /* 인쇄 시 미디어 쿼리는 축소 전 지면 폭(약 733px)으로 평가되어 모바일 레이아웃이
-     적용되므로, 데스크톱 화면과 동일한 단 구성을 되돌린다. */
   .profile-grid { grid-template-columns: 1fr 1.4fr 1fr; }
   .profile-grid-2col { grid-template-columns: 1fr 2fr; }
 
@@ -126,18 +123,20 @@
     padding-top: 0;
   }
 
-  /* 면 구성 */
-  #research .section-title { break-before: page; }  /* 1면은 Profile, 2면은 Research + Activities 목록 */
+  .modal-body .exp-cols { grid-template-columns: 1fr 1fr; }
+  .modal-body .exp-cols3 { grid-template-columns: repeat(3, 1fr); }
 
-  /* 상세는 3면부터. 한 항목이 페이지 경계에서 쪼개지지 않게만 막고,
-     남는 자리에는 다음 항목이 이어지도록 두어 짧은 항목끼리 한 면에 모인다. */
-  .detail-pages > .detail-page:first-child { break-before: page; }
-  .detail-page { break-inside: avoid; }
+  /* 좁은 화면에서 그림에 걸리던 520px 제한을 풀어 화면과 같은 크기로 둔다. */
+  .deep .modal-fields > .fig { max-width: 960px; }
 
-  /* PDF에서는 저작권 표시를 넣지 않는다. */
-  .site-footer { display: none; }
+  /* 폭이 좁은 칸에서 한글이 단어 중간에서 끊기지 않게 한다. */
+  .timeline-body,
+  .timeline-meta { word-break: keep-all; }
 
-  /* 페이지 분할 제어 */
+  /* ── 5. 면 나눔 — 섹션 하나가 한 면이다. ── */
+  main > section + section { break-before: page; }
+  main > section { break-inside: avoid; }
+
   .section-title,
   .cv-block > h3,
   .skill-group > h3,
@@ -148,11 +147,28 @@
 
   .timeline li,
   .table-list li,
-  .divider-list > li,
-  .modal-steps li,
-  .modal-stat,
-  .project-card { break-inside: avoid; }
+  .divider-list > li { break-inside: avoid; }
 
+  /* ── 6. 링크 ── */
   a { color: var(--text); text-decoration: none; }
   .modal-links a { color: var(--accent); }
+
+  /* ── 7. 화면에서 슬라이드로 넘겨 보던 중 그대로 인쇄한 경우 ──
+     겹쳐 둔 면을 다시 이어 붙여 전체 문서로 되돌린다. */
+  .slide-mode {
+    height: auto;
+    display: block;
+    overflow: visible;
+  }
+
+  .slide-mode main { position: static; }
+
+  .slide-mode .slide,
+  .slide-mode .slide:not(.is-active) {
+    position: static;
+    display: block;
+    overflow: visible;
+  }
+
+  .slide-mode .slide.is-active { animation: none; }
 }
