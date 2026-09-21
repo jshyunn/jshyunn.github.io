@@ -45,7 +45,7 @@
      여섯 면이 모두 한 장씩 들어가는 가장 큰 값이다. 0.672 로 올리면
      AI 에이전트 면이 둘로 쪼개진다. 면을 하나라도 줄이거나 늘리면 다시 재야 한다. */
   body {
-    zoom: 0.668;
+    zoom: 0.682;
     background: #fff;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
@@ -89,7 +89,7 @@
      그 여유를 사진에 쓴다. 너무 키우면 아래 어학 칸이 다음 면으로 밀려
      1면이 둘로 쪼개지므로 들어가는 최대치로 둔다. */
   .hero-photo {
-    width: 240px;
+    width: 250px;
     height: auto;
   }
 
@@ -109,14 +109,93 @@
   .modal-body .exp-cols3 { grid-template-columns: repeat(3, 1fr); }
 
   /* 좁은 화면에서 그림에 걸리던 520px 제한을 풀어 화면과 같은 크기로 둔다. */
-  .deep .modal-fields > .fig { max-width: 960px; }
+  /* 그림을 840px 로 묶어 Deep Dive 면의 높이를 줄이고, 그렇게 번 자리로
+     문서 전체 배율을 0.682 까지 올렸다. 그림은 폭에 비례해 줄어들므로
+     그 안의 글자만 1.119 배로 되돌려 이전과 같은 크기로 찍히게 한다.
+       이전 배율 960/848 x 0.668 = 0.7562
+       0.6815 */
+  .deep .modal-fields > .fig { max-width: 840px; }
+  .deep .modal-fields { gap: 28px; }
 
-  /* 폭이 좁은 칸에서 한글이 단어 중간에서 끊기지 않게 한다. */
-  .timeline-body,
-  .timeline-meta { word-break: keep-all; }
+  .deep .modal-fields > .fig svg text[font-size="10.5"] { font-size: 11.8px; }
+  .deep .modal-fields > .fig svg text[font-size="11"] { font-size: 12.3px; }
+  .deep .modal-fields > .fig svg text[font-size="11.5"] { font-size: 12.9px; }
+  .deep .modal-fields > .fig svg text[font-size="12"] { font-size: 13.4px; }
+  .deep .modal-fields > .fig svg text[font-size="12.5"] { font-size: 14.0px; }
+
+  /* 한글은 기본값이면 낱말 중간에서도 줄이 끊긴다("... 환경에서는 이 / 미 안으로").
+     문서 전체에 낱말 단위 줄바꿈을 걸고, 마지막 줄에 낱말 하나만 남는
+     외톨이 줄은 text-wrap: pretty 가 줄 나눔을 다시 잡아 줄인다. */
+  main {
+    word-break: keep-all;
+    overflow-wrap: break-word;   /* 칸보다 긴 낱말 하나는 예외로 끊는다 */
+    text-wrap: pretty;
+  }
+
+  /* ── 4-0. Profile 면의 밀도 ──
+     묶음이 여섯 개라 두 면과 같은 줄 간격을 주면 마지막 줄(어학·연구 분야)이
+     다음 장으로 밀린다. 줄 문법은 그대로 두고 간격과 왼쪽 열 폭만 줄인다. */
+  #profile .table-list > li,
+  #profile .dot-timeline > li { padding: 12px 0; }
+
+  #profile .profile-grid { gap: 28px 48px; }
+
+  /* 머리 부분과 표 사이, 그리고 묶음 제목 아래 여백을 줄여 마지막 줄까지 한 면에 담는다. */
+  #profile .profile-hero { padding-bottom: 26px; margin-bottom: 32px; }
+  #profile .cv-block > h3,
+  #profile .skill-group > h3 { margin-bottom: 22px; }
+  #profile .hero-tags { margin-top: 10px; }
+
+  /* 왼쪽 열 폭은 그 목록이 담는 값에 맞춘다. 한 값으로 묶으면
+     날짜가 짧은 목록은 오른쪽이 좁아져 항목 이름이 줄바꿈으로 깨진다.
+       기본 정보 · 자격증  2025.12 처럼 한 날짜      → 좁게
+       경력               2025.07 – 2025.08 기간    → 넓게 */
+  #profile .table-list > li { grid-template-columns: 5.2rem 1fr; }
+  #profile .dot-timeline > li { grid-template-columns: 8.8rem 1fr; }
+
+  /* 왼쪽 칸이 좁아 항목 이름이 깨지지 않도록 칸 자체도 조금 넓힌다. */
+  #profile .profile-grid-2col { grid-template-columns: 1.15fr 2fr; }
+
+  /* ── 4-1. Research 와 Activities 를 한 면 두 단으로 ──
+     둘을 합쳐도 열세 줄이다. 각각 한 장을 쓰면 어느 쪽도 지면을 채우지 못하고,
+     가로 A4 는 세로보다 폭이 남으므로 두 단으로 세우는 편이 자연스럽다.
+     왼쪽 단 = 연구(연구과제 · 특허 · 논문), 오른쪽 단 = 성과(수상 · 활동).
+     두 단 사이에 세로선 하나만 두어 구역을 나눈다.
+     화면은 그대로 두 면이고, 지면에서만 합친다. */
+  #research,
+  #activities { min-height: 1094px; }   /* 지면 높이 748px ÷ 배율 0.668 */
+
+  /* 왼쪽 단은 가운데 선 앞에서 끊는다. */
+  #research {
+    float: left;
+    width: calc(50% - 40px);
+  }
+
+  /* 오른쪽 단은 지면 한가운데에서 시작해, 그 왼쪽 테두리가 곧 가운데 구분선이 된다.
+     (box-sizing: border-box 이므로 padding 은 50% 안쪽으로 들어간다.)
+     폭을 calc(50% - 40px) 로 두면 선이 가운데보다 40px 오른쪽으로 밀린다. */
+  #activities {
+    float: right;
+    width: 50%;
+    padding-left: 40px;
+    border-left: 1px solid var(--border);
+  }
+
+  /* 뒤 면이 떠 있는 두 단 아래로 흘러들지 않게 막는다. */
+  #deep-zt { clear: both; }
+
+  /* 묶음을 단 높이 전체에 나눠 놓아, 남는 자리가 아래 한 곳에 뭉치지 않게 한다. */
+  #research > .container,
+  #activities > .container {
+    min-height: 1094px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
   /* ── 5. 면 나눔 — 섹션 하나가 한 면이다. ── */
-  main > section + section { break-before: page; }
+  /* Activities 는 Research 와 같은 면에 나란히 놓이므로 앞에서 넘기지 않는다. */
+  main > section + section:not(#activities) { break-before: page; }
   main > section { break-inside: avoid; }
 
   .section-title,
