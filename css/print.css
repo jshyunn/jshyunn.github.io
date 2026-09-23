@@ -44,9 +44,12 @@
        배치 폭 1077 ÷ 0.668 ≈ 1612px, 한 면에 담기는 높이 748 ÷ 0.668 ≈ 1120px
      여섯 면이 모두 한 장씩 들어가는 가장 큰 값이다. 0.672 로 올리면
      AI 에이전트 면이 둘로 쪼개진다. 면을 하나라도 줄이거나 늘리면 다시 재야 한다. */
+  /* 지면 전체(여백 포함)를 바탕색으로 덮는다. html 에도 줘야 가장자리까지 찬다. */
+  html { background: var(--bg); }
+
   body {
     zoom: 0.682;
-    background: #fff;
+    background: var(--bg);
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -58,8 +61,6 @@
   .site-footer,
   .slide-arrow,
   .slide-dots { display: none !important; }
-
-  .section-alt { background: #fff; }
 
   /* 스크롤 등장 효과는 화면에 들어온 적 없는 요소를 숨긴 채로 출력하므로 해제한다. */
   .reveal,
@@ -131,30 +132,6 @@
     overflow-wrap: break-word;   /* 칸보다 긴 낱말 하나는 예외로 끊는다 */
     text-wrap: pretty;
   }
-
-  /* ── 4-0. Profile 면의 밀도 ──
-     묶음이 여섯 개라 두 면과 같은 줄 간격을 주면 마지막 줄(어학·연구 분야)이
-     다음 장으로 밀린다. 줄 문법은 그대로 두고 간격과 왼쪽 열 폭만 줄인다. */
-  #profile .table-list > li,
-  #profile .dot-timeline > li { padding: 12px 0; }
-
-  #profile .profile-grid { gap: 28px 48px; }
-
-  /* 머리 부분과 표 사이, 그리고 묶음 제목 아래 여백을 줄여 마지막 줄까지 한 면에 담는다. */
-  #profile .profile-hero { padding-bottom: 26px; margin-bottom: 32px; }
-  #profile .cv-block > h3,
-  #profile .skill-group > h3 { margin-bottom: 22px; }
-  #profile .hero-tags { margin-top: 10px; }
-
-  /* 왼쪽 열 폭은 그 목록이 담는 값에 맞춘다. 한 값으로 묶으면
-     날짜가 짧은 목록은 오른쪽이 좁아져 항목 이름이 줄바꿈으로 깨진다.
-       기본 정보 · 자격증  2025.12 처럼 한 날짜      → 좁게
-       경력               2025.07 – 2025.08 기간    → 넓게 */
-  #profile .table-list > li { grid-template-columns: 5.2rem 1fr; }
-  #profile .dot-timeline > li { grid-template-columns: 8.8rem 1fr; }
-
-  /* 왼쪽 칸이 좁아 항목 이름이 깨지지 않도록 칸 자체도 조금 넓힌다. */
-  #profile .profile-grid-2col { grid-template-columns: 1.15fr 2fr; }
 
   /* ── 4-1. Research 와 Activities 를 한 면 두 단으로 ──
      둘을 합쳐도 열세 줄이다. 각각 한 장을 쓰면 어느 쪽도 지면을 채우지 못하고,

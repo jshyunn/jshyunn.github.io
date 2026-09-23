@@ -13,6 +13,36 @@ if (navToggle && nav) {
   });
 }
 
+// 상세 이력 — About 면의 버튼으로 열고 닫는다.
+// 화면을 채우는 목록은 여기에 두고, 면에는 먼저 읽혀야 할 것만 남긴다.
+const detail = document.getElementById("detail");
+
+if (detail) {
+  const openBtns = document.querySelectorAll(".detail-open");
+  const closeBtn = detail.querySelector(".detail-close");
+
+  function setDetail(open) {
+    detail.hidden = !open;
+    openBtns.forEach((b) => b.setAttribute("aria-expanded", open ? "true" : "false"));
+    if (open) {
+      detail.querySelector(".detail-sheet").scrollTop = 0;
+      if (closeBtn) closeBtn.focus();
+    }
+  }
+
+  openBtns.forEach((b) => b.addEventListener("click", () => setDetail(true)));
+  if (closeBtn) closeBtn.addEventListener("click", () => setDetail(false));
+
+  // 바깥(어두운 바탕)을 누르면 닫는다. 안쪽을 눌렀을 때는 그대로 둔다.
+  detail.addEventListener("click", (e) => {
+    if (e.target === detail) setDetail(false);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !detail.hidden) setDetail(false);
+  });
+}
+
 // ?print 로 열면 넘김 없이 모든 면이 이어진 인쇄용 문서가 된다.
 const printMode = new URLSearchParams(window.location.search).has("print");
 
@@ -141,6 +171,8 @@ if (slideMode) {
     prevBtn.disabled = i === 0;
     nextBtn.disabled = i === slides.length - 1;
 
+
+
     // 주소를 맞춰 두면 새로 고침이나 링크 공유에서 같은 면으로 돌아온다.
     // file:// 로 열면 브라우저가 막는 경우가 있어 실패해도 넘어간다.
     const id = slideId(slides[i]);
@@ -211,4 +243,5 @@ if (slideMode) {
   window.addEventListener("hashchange", () => goToSlide(slideIndexFromHash()));
 
   goToSlide(slideIndexFromHash());
+
 }
